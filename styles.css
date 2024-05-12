@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+}
+
+:root {
+    --purple: hsl(259, 100%, 65%);
+    --light_red: hsl(0, 100%, 67%);
+    --white: hsl(0, 0%, 100%);
+    --off_white: hsl(0, 0%, 94%);
+    --light_grey: hsl(0, 0%, 86%);
+    --smokey_grey: hsl(0, 1%, 44%);
+    --off_black: hsl(0, 0%, 8%);
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--off_white);
+}
+
+main {
+    background-color: var(--white);
+    width: 58%;
+    padding: 50px;
+    border-radius: 20px 20px 80px 20px;
+}
+
+.inputs {
+    width: 68%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+label {
+    color: var(--smokey_grey);
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+input {
+    width: 130px;
+    height: 60px;
+    border: 1px solid var(--light_grey);
+    border-radius: 10px;
+}
+
+hr {
+    width: 68%;
+}
+
+img {
+    display: inline;
+    background-color: var(--purple);
+    border-radius: 50%;
+}
+
+.results {
+    font-size: 60px;
+    font-weight: 800;
+}
+
+.result-value {
+    color: var(--purple);
+}
+
+
+
+/* display block needed because body display flex */
+footer {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+}
