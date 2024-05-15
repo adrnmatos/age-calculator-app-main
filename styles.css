@@ -30,13 +30,13 @@ body {
 
 main {
     background-color: var(--white);
-    width: 50%;
+    width: 40%;
     padding: 50px;
-    border-radius: 20px 20px 80px 20px;
+    border-radius: 20px 20px 200px 20px;
 }
 
 .inputs {
-    width: 68%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,7 +60,11 @@ input {
     height: 60px;
     border: 1px solid var(--light_grey);
     border-radius: 10px;
+    padding-left: 10%;
+    font-size: 24px;
+    font-weight: 800;
 }
+
 
 .controls {
     margin-top: 30px;
@@ -69,24 +73,27 @@ input {
 }
 
 hr {
-    width: 68%;
+    width: 90%;
     height: 1px;
     background-color: var(--light_grey);
     display: inline-block;
 }
 
 button {
-    background-color: var(--white);
+    background-color: var(--purple);
+    min-width: 90px;
+    min-height: 90px;
+    border-radius: 50%;
 }
 
 img {
-    height: 80px;
+    height: 50px;
     background-color: var(--purple);
     border-radius: 50%;
 }
 
 .results {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 60px;
     font-weight: 800;
 }
@@ -105,8 +112,39 @@ footer {
 .attribution {
     font-size: 11px;
     text-align: center;
-  }
+}
 
-  .attribution a {
+.attribution a {
     color: hsl(228, 45%, 44%);
-  }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        width: 90%;
+        padding: 40px 10px;
+        border-radius: 20px 20px 50px 20px;
+    }
+
+    .inputs {
+        width: 100%;
+    }
+
+
+    input {
+        width: 80px;
+        height: 60px;
+        border: 1px solid var(--light_grey);
+        border-radius: 10px;
+        padding-left: 10%;
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    .results {
+        font-size: 30px;
+    }
+
+    footer {
+        display: none;
+    }
+}
