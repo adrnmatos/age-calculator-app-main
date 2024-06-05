@@ -1,37 +1,53 @@
+// input elements
+const day_element = document.getElementById('input-day');
+const month_element = document.getElementById('input-month');
+const year_element = document.getElementById('input-year');
+
+// output elements
+const output_day_element = document.getElementById('result-days');
+const output_month_element = document.getElementById('result-months');
+const output_year_element = document.getElementById('result-years')
+
 function calculate() {
-    const b_day = document.getElementById('input-day').value;
-    if (b_day == "") {
-        document.getElementById('error-message-day').classList.toggle("hidden");
-    }
+    let b_day = day_element.value;
+    if (b_day == "") setErrorIndication(day_element);       
 
-    const b_month = document.getElementById('input-month').value;
-    alert(b_month)
-    if (b_month == "") {
-        document.getElementById('error-message-month').classList.toggle("hidden");
-    }
+    let b_month = month_element.value;
+    if (b_month == "") setErrorIndication(month_element);
 
-    const b_year = document.getElementById('input-year').value;
-    if (b_year == "") {
-        document.getElementById('error-message-year').classList.toggle("hidden");
-    }
+    let b_year = year_element.value;
+    if (b_year == "") setErrorIndication(year_element);
 
     if (b_day && b_month && b_year != "") {
-        let birthday = new Date(b_year, b_month - 1, b_day); // javascript months start at zero
-
+        let birthday = new Date(b_year, b_month - 1, b_day); // months start at zero
         let today = new Date();
 
         const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
         let diffDays = Math.round((Math.abs(today - birthday) / oneDay));
-        // alert(diffDays);
 
+        // calculate
         let howManyYears = Math.floor(diffDays / 365);
         let howManyMonths = Math.floor((diffDays - (howManyYears * 365)) / 30);
         let remainingDays = diffDays - (365 * howManyYears) - (30 * howManyMonths);
 
-        document.getElementById('result-years').innerHTML = howManyYears;
-        document.getElementById('result-months').innerHTML = howManyMonths;
-        document.getElementById('result-days').innerHTML = remainingDays;
-    }
+        // update result elements
+        output_day_element.innerHTML = remainingDays;
+        output_month_element.innerHTML = howManyMonths;
+        output_year_element.innerHTML = howManyYears;
 
-    // alert(`${howManyYears} years - ${howManyMonths} months - ${remainingDays} days`);
+        // cleanup error indication if any
+        clearErrorIndication(day_element);
+        clearErrorIndication(month_element);
+        clearErrorIndication(year_element);
+    }
+}
+
+function setErrorIndication(elem) {
+    elem.style.border = "1px solid var(--light_red)";
+    elem.nextElementSibling.classList.remove("hidden");
+}
+
+function clearErrorIndication(elem) {
+    elem.style.border = "1px solid var(--light_gray)";
+    elem.nextElementSibling.classList.add("hidden");
 }
