@@ -30,13 +30,14 @@ body {
 
 main {
     background-color: var(--white);
-    width: 40%;
+    width: 58%;
+    max-width: 800px;
     padding: 50px;
     border-radius: 20px 20px 200px 20px;
 }
 
 .inputs {
-    width: 70%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,7 +46,8 @@ main {
 .part {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    height: 120px;
 }
 
 label {
@@ -65,15 +67,25 @@ input {
     font-weight: 800;
 }
 
+.hidden {
+    display: none;
+}
+
+span {
+    color: var(--light_red);
+    font-size: 14px;
+    font-style: italic;
+}
 
 .controls {
     margin-top: 30px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
 hr {
-    width: 90%;
+    width: 70%;
     height: 1px;
     background-color: var(--light_grey);
     display: inline-block;
