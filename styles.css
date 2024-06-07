@@ -67,6 +67,10 @@ input {
     font-weight: 800;
 }
 
+.input_element-error_indication {
+    border: 1px solid var(--light_red);
+}
+
 .hidden {
     visibility: hidden;
 }

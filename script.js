@@ -43,11 +43,11 @@ function calculate() {
 }
 
 function setErrorIndication(elem) {
-    elem.style.border = "1px solid var(--light_red)";
+    elem.classList.add("input_element-error_indication");
     elem.nextElementSibling.classList.remove("hidden");
 }
 
 function clearErrorIndication(elem) {
-    elem.style.border = "1px solid var(--light_gray)";
+    elem.classList.remove("input_element-error_indication");
     elem.nextElementSibling.classList.add("hidden");
 }
