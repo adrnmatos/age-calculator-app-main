@@ -89,7 +89,7 @@ span {
 }
 
 hr {
-    width: 70%;
+    width: 100%;
     height: 1px;
     background-color: var(--light_grey);
     display: inline-block;
@@ -110,11 +110,17 @@ img {
 
 .results {
     margin-top: 20px;
+}
+    
+.result {
     font-size: 60px;
     font-weight: 800;
 }
 
-.result-value {
+    
+.result-value {    
+    font-size: 60px;
+    font-weight: 800;
     color: var(--purple);
 }
 
