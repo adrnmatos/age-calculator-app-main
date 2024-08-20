@@ -1,53 +1,135 @@
-// input elements
-const day_element = document.getElementById('input-day');
-const month_element = document.getElementById('input-month');
-const year_element = document.getElementById('input-year');
+// html input elements
+const dayInput = document.getElementById('day-input-elem');
+const monthInput = document.getElementById('month-input-elem');
+const yearInput = document.getElementById('year-input-elem');
 
-// output elements
-const output_day_element = document.getElementById('result-days');
-const output_month_element = document.getElementById('result-months');
-const output_year_element = document.getElementById('result-years')
+// html output elements
+const dayOutput = document.getElementById('result-days');
+const monthOutput = document.getElementById('result-months');
+const yearOutput = document.getElementById('result-years');
+
 
 function calculate() {
-    let b_day = day_element.value;
-    if (b_day == "") setErrorIndication(day_element);       
+    // input values
+    let day = dayInput.value;
+    let month = monthInput.value;
+    let year = yearInput.value;
 
-    let b_month = month_element.value;
-    if (b_month == "") setErrorIndication(month_element);
+    if (isInputInvalid(day, month, year))
+        return;
 
-    let b_year = year_element.value;
-    if (b_year == "") setErrorIndication(year_element);
+    let today = new Date();
 
-    if (b_day && b_month && b_year != "") {
-        let birthday = new Date(b_year, b_month - 1, b_day); // months start at zero
-        let today = new Date();
 
-        const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
-        let diffDays = Math.round((Math.abs(today - birthday) / oneDay));
-
-        // calculate
-        let howManyYears = Math.floor(diffDays / 365);
-        let howManyMonths = Math.floor((diffDays - (howManyYears * 365)) / 30);
-        let remainingDays = diffDays - (365 * howManyYears) - (30 * howManyMonths);
-
-        // update result elements
-        output_day_element.innerHTML = remainingDays;
-        output_month_element.innerHTML = howManyMonths;
-        output_year_element.innerHTML = howManyYears;
-
-        // cleanup error indication if any
-        clearErrorIndication(day_element);
-        clearErrorIndication(month_element);
-        clearErrorIndication(year_element);
+    let howManyYears = today.getFullYear() - year;
+    let howManyMonths = today.getMonth() + 1 - month; // getMonth starts at 0
+    if (howManyMonths < 0) {
+        howManyYears--;
+        howManyMonths += 12;
     }
+    let howManyDays = today.getDate() - day;
+    if (howManyDays < 0) {
+        howManyMonths--;
+        howManyDays += 30;
+    }
+
+    console.log(`manyYears ${howManyYears} - manyMonths ${howManyMonths} - manyDays ${howManyDays}`);
+    clearErrorIndication();
+}
+
+function isInputInvalid(day, month, year) {
+
+    return (thereAreEmptyFields(day, month, year) || thereAreInvalidInputValues(day, month, year) || theDateIsInvalid(day, month, year));
+}
+
+function thereAreEmptyFields(day, month, year) {
+
+    let areThereEmptyFields = false;
+
+    if (year == "") {
+        setErrorIndication(yearInput);
+        areThereEmptyFields = true;
+    }
+
+    if (month == "") {
+        setErrorIndication(monthInput);
+        areThereEmptyFields = true;
+    }
+
+    if (day == "") {
+        setErrorIndication(dayInput);
+        areThereEmptyFields = true;
+    }
+
+    return areThereEmptyFields;
+}
+
+function thereAreInvalidInputValues(day, month, year) {
+
+    let areThereInvalidInputValues = false;
+
+    if (day > 31 || day < 1) {
+        setInvalidDayIndicator();
+        areThereInvalidInputValues = true;
+    }
+
+    if (month > 12 || month < 1) {
+        setInvalidMonthIndicator();
+        areThereInvalidInputValues = true
+    }
+
+    if (year > new Date().getFullYear()) {
+        setInvalidFutureYear();
+        areThereInvalidInputValues = true;
+    }
+
+    return areThereInvalidInputValues;
+}
+
+function theDateIsInvalid(day, month, year) {
+
+    let isDateInvalid = false;
+    let monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if (month == 2) {
+        if (isYearLeap(year)) {
+            monthDays[1] = 29;
+        }
+    }
+
+    if (day > monthDays[monthInput.value - 1]) {
+        setInvalidDate();
+        isDateInvalid = true;
+    }
+
+    return isDateInvalid;
+}
+
+function isYearLeap(year) {
+
+    if (year % 4 == 0) return true;
+    else return false;
 }
 
 function setErrorIndication(elem) {
-    elem.classList.add("input_element-error_indication");
+    elem.classList.add("input_elem-error_indication");
     elem.nextElementSibling.classList.remove("hidden");
 }
 
-function clearErrorIndication(elem) {
-    elem.classList.remove("input_element-error_indication");
-    elem.nextElementSibling.classList.add("hidden");
+function clearErrorIndication() {
+    dayInput.classList.remove("input_elem-error_indication");
+    monthInput.classList.remove("input_elem-error_indication");
+    yearInput.classList.remove("input_elem-error_indication");
+
+    dayInput.nextElementSibling.classList.add("hidden");
+    monthInput.nextElementSibling.classList.add("hidden");
+    yearInput.nextElementSibling.classList.add("hidden");
+
 }
+
+//     // update result elements
+//     output_day_element.innerHTML = remainingDays;
+//     output_month_element.innerHTML = howManyMonths;
+//     output_year_element.innerHTML = howManyYears;
+
+

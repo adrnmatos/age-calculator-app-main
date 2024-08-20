@@ -28,6 +28,7 @@ body {
     background-color: var(--off_white);
 }
 
+/* MAIN */
 main {
     background-color: var(--white);
     width: 58%;
@@ -36,14 +37,15 @@ main {
     border-radius: 20px 20px 200px 20px;
 }
 
-.inputs {
+/* INPUT */
+.input-area {
     width: 65%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.part {
+.input-elem {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -68,12 +70,18 @@ input {
     font-weight: 800;
 }
 
-.input_element-error_indication {
-    border: 1px solid var(--light_red);
+input:hover {
+    outline: none !important;
+    border-color: var(--purple);
+    cursor: pointer;
+}
+
+.input_elem-error_indication {
+    border-color: var(--light_red);
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 span {
@@ -82,7 +90,8 @@ span {
     font-style: italic;
 }
 
-.controls {
+/* CONTROLS */
+.controls-area {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
@@ -109,25 +118,32 @@ img {
     border-radius: 50%;
 }
 
-.results {
+button:hover,
+img:hover {
+    background-color: var(--off_black);
+}
+
+/* RESULTS */
+.results-area {
     margin-top: 20px;
 }
-    
+
 .result {
     font-size: 60px;
     font-weight: 800;
     font-style: italic;
 }
 
-    
-.result-value {    
+
+.result-value {
     font-size: 60px;
     font-weight: 800;
     color: var(--purple);
     letter-spacing: 0.2rem;
 }
 
-/* display block needed because body display flex */
+/* FOOTER */
+/* block display because flex body */
 footer {
     display: block;
     position: absolute;
@@ -150,7 +166,7 @@ footer {
         border-radius: 20px 20px 50px 20px;
     }
 
-    .inputs {
+    .inputs-area {
         width: 100%;
     }
 
@@ -165,7 +181,7 @@ footer {
         font-weight: 800;
     }
 
-    .results {
+    .results-area {
         font-size: 30px;
     }
 
