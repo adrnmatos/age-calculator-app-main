@@ -37,7 +37,7 @@ main {
     border-radius: 20px 20px 200px 20px;
 }
 
-/* INPUT */
+/* INPUT AREA */
 .input-area {
     width: 65%;
     display: flex;
@@ -48,8 +48,8 @@ main {
 .input-elem {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 120px;
+    justify-content: flex-start;
+    height: 100px;
 }
 
 label {
@@ -58,6 +58,10 @@ label {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+}
+
+.input_label-error_indication {
+    color: var(--light_red);
 }
 
 input {
@@ -80,18 +84,18 @@ input:hover {
     border-color: var(--light_red);
 }
 
-.hidden {
-    display: none;
-}
-
 span {
     color: var(--light_red);
     font-size: 14px;
     font-style: italic;
 }
 
-/* CONTROLS */
-.controls-area {
+.hidden {
+    display: none;
+}
+
+/* CONTROL AREA */
+.control-area {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
@@ -99,41 +103,33 @@ span {
 }
 
 hr {
-    width: 100%;
+    width: 90%;
     height: 1px;
     background-color: var(--light_grey);
     display: inline-block;
 }
 
-button {
+img {
     background-color: var(--purple);
     min-width: 90px;
     min-height: 90px;
     border-radius: 50%;
 }
 
-img {
-    height: 50px;
-    background-color: var(--purple);
-    border-radius: 50%;
-}
-
-button:hover,
 img:hover {
     background-color: var(--off_black);
 }
 
-/* RESULTS */
+/* RESULTS AREA */
 .results-area {
     margin-top: 20px;
 }
 
-.result {
+.result-elem {
     font-size: 60px;
     font-weight: 800;
     font-style: italic;
 }
-
 
 .result-value {
     font-size: 60px;
@@ -143,7 +139,6 @@ img:hover {
 }
 
 /* FOOTER */
-/* block display because flex body */
 footer {
     display: block;
     position: absolute;

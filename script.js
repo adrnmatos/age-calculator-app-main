@@ -1,3 +1,8 @@
+// html label elements
+const dayLabel = document.getElementById('day-label-elem');
+const monthLabel = document.getElementById('month-label-elem');
+const yearLabel = document.getElementById('year-label-elem');
+
 // html input elements
 const dayInput = document.getElementById('day-input-elem');
 const monthInput = document.getElementById('month-input-elem');
@@ -10,19 +15,21 @@ const yearOutput = document.getElementById('result-years');
 
 
 function calculate() {
-    // input values
+
+    // get values
     let day = dayInput.value;
     let month = monthInput.value;
     let year = yearInput.value;
 
-    if (isInputInvalid(day, month, year))
+    if (isInputInvalid(day, month, year)) {
+        clearResults();
         return;
+    }
 
     let today = new Date();
 
-
     let howManyYears = today.getFullYear() - year;
-    let howManyMonths = today.getMonth() + 1 - month; // getMonth starts at 0
+    let howManyMonths = today.getMonth() + 1 - month; // getMonth returns 0-11
     if (howManyMonths < 0) {
         howManyYears--;
         howManyMonths += 12;
@@ -34,6 +41,12 @@ function calculate() {
     }
 
     console.log(`manyYears ${howManyYears} - manyMonths ${howManyMonths} - manyDays ${howManyDays}`);
+
+    // print results
+    dayOutput.innerHTML = howManyDays;
+    monthOutput.innerHTML = howManyMonths;
+    yearOutput.innerHTML = howManyYears;
+
     clearErrorIndication();
 }
 
@@ -112,11 +125,21 @@ function isYearLeap(year) {
 }
 
 function setErrorIndication(elem) {
+
     elem.classList.add("input_elem-error_indication");
+    elem.previousElementSibling.classList.add("input_label-error_indication");
     elem.nextElementSibling.classList.remove("hidden");
 }
 
+function clearResults() {
+
+    dayOutput.innerHTML = "--";
+    monthOutput.innerHTML = "--";
+    yearOutput.innerHTML = "--";
+}
+
 function clearErrorIndication() {
+
     dayInput.classList.remove("input_elem-error_indication");
     monthInput.classList.remove("input_elem-error_indication");
     yearInput.classList.remove("input_elem-error_indication");
@@ -125,11 +148,9 @@ function clearErrorIndication() {
     monthInput.nextElementSibling.classList.add("hidden");
     yearInput.nextElementSibling.classList.add("hidden");
 
+    dayInput.previousElementSibling.classList.remove("input_label-error_indication");
+    monthInput.previousElementSibling.classList.remove("input_label-error_indication");
+    yearInput.previousElementSibling.classList.remove("input_label-error_indication");
 }
-
-//     // update result elements
-//     output_day_element.innerHTML = remainingDays;
-//     output_month_element.innerHTML = howManyMonths;
-//     output_year_element.innerHTML = howManyYears;
 
 

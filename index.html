@@ -16,39 +16,37 @@
   <main>
     <div class="input-area">
       <div class="input-elem">
-        <label for="day-input-elem">Day</label>
+        <label for="day-input-elem" id="day-label-elem">Day</label>
         <input id="day-input-elem" placeholder="DD">
         <span id="day-error-message-area" class="hidden">This field is required</span>
       </div>
 
       <div class="input-elem">
-        <label for="month-input-elem">Month</label>
+        <label for="month-input-elem" id="month-label-elem">Month</label>
         <input id="month-input-elem" placeholder="MM">
         <span id="month-error-message-area" class="hidden">This field is required</span>
       </div>
 
       <div class="input-elem">
-        <label for="year-input-elem">Year</label>
+        <label for="year-input-elem" id="year-label-elem">Year</label>
         <input id="year-input-elem" placeholder="YYYY">
         <span id="year-error-message-area" class="hidden">This field is required</span>
       </div>
     </div>
 
-    <div class="controls-area">
+    <div class="control-area">
       <hr />
-      <button class="div1" onclick="calculate()">
-        <img src="./assets/images/icon-arrow.svg" alt="">
-      </button>
+      <img src="./assets/images/icon-arrow.svg" onclick="calculate()" alt="process-image">
     </div>
 
     <div class="results-area">
-      <div class="result">
+      <div class="result-elem">
         <span id="result-years" class="result-value">--</span> years
       </div>
-      <div class="result">
+      <div class="result-elem">
         <span id="result-months" class="result-value">--</span> months
       </div>
-      <div class="result">
+      <div class="result-elem">
         <span id="result-days" class="result-value">--</span> days
       </div>
     </div>
